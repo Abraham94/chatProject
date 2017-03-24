@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 15px 10px; }
+      #messages li:nth-child(odd) { background: #8E91A2; }
+      #messages { margin-bottom: 40px }
+      .clicked 
+      {
+        color:red !important;
+      }
+      
+      li	{ color:black; font-family:Times New Roman,Georgia,Serif; }
+    </style>
+    <script src="/angular"></script>
+    <script src="/sanitize"></script>
+    <script src="/app"></script>
+    <script src="/socketIo"></script>
+    <script src="/controllers"></script>
+    <script src="/directives"></script>
+    <script src="/factories"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  </head>
+  
+  
+  <body ng-app="chatApp">
+  
+      <div ng-controller="msgController">
+      <!--
+        <form ng-submit="connect(txtUser, txtPass)">
+            <input type="text" ng-model="txtUser" placeholder="login">
+            <input type="password" ng-model="txtPass" placeholder="mot de passe">
+            <input type="submit">
+        </form>
+        -->
+      <input type="type" ng-model="pseudo" placeholder="pseudo">
+      <div>
+          <div class="nav">
+              <button type="button" class="btn btn-default" ng-class="{'clicked': selectedButton== channel.cle }" ng-repeat="channel in channels" ng-click="selectChannel(channel.cle)" ng-style="channel.cle">{{channel.intitule}}</button>
+          </div>
+
+            <ul id="messages">
+                <li ng-repeat="msg in listMsg"> {{msg}} </li>
+            </ul>
+            
+            <form ng-submit="envoi()">
+              <input ng-model="txtMsg" id="m" autocomplete="off" /><button>Send</button>
+            </form>
+        </div>
+      </div>
+
+  </body>
+</html>
